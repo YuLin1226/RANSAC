@@ -61,7 +61,7 @@ def _ransac_find_scale(pts_set_1, pts_set_2, sigma, max_iter=1000):
     return best_ratio
 
 
-def rot(theta):
+def _rot(theta):
 
     x = theta / 180 * math.pi
     T = np.array([
@@ -92,7 +92,7 @@ if __name__ == "__main__":
         
         pts_np_1 = np.array(pts).T
         uncertain_np = np.array(uncertain).T
-        pts_np_2 = rot(0).dot(pts_np_1)*ratio + uncertain_np
+        pts_np_2 = _rot(30).dot(pts_np_1)*ratio + uncertain_np
 
         noise_1, noise_2 = [], []
         for i in range(20):
